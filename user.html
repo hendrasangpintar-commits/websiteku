@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Panel</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Poppins, sans-serif;
+  background:#000;
+  color:#00ffea;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.box{
+  width:90%;
+  max-width:400px;
+  background:#0e0e0e;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 0 20px #00ffea;
+  text-align:center;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  margin-top:15px;
+  border:2px solid #00ffee;
+  border-radius:10px;
+  background:#000;
+  color:#00ffee;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  margin-top:15px;
+  background:#00ffee;
+  color:#000;
+  font-weight:bold;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+}
+
+button:hover{
+  box-shadow:0 0 15px #00ffee;
+}
+
+.result{
+  margin-top:20px;
+  font-size:18px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="box">
+  <h2>User — Masukkan Key</h2>
+
+  <input id="keyInput" placeholder="Masukkan key anda">
+
+  <button onclick="cekKey()">Cek Key</button>
+
+  <div class="result" id="hasil"></div>
+
+  <a href="admin.html" style="color:#00ffee;display:block;margin-top:15px;">
+    ⬅ Kembali ke Admin
+  </a>
+</div>
+
+<script>
+function cekKey(){
+  let key = document.getElementById("keyInput").value.trim();
+
+  if(key===""){
+    document.getElementById("hasil").innerText="Key kosong!";
+    return;
+  }
+
+  window.location.href = "testkey.html?key=" + encodeURIComponent(key);
+}
+</script>
+
+</body>
+</html>

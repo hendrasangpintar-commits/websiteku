@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cek Key</title>
+
+<style>
+body{
+  margin:0;
+  background:#000;
+  color:#00ffe6;
+  font-family:Poppins,sans-serif;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.card{
+  width:90%;
+  max-width:420px;
+  padding:30px;
+  background:#0d0d0d;
+  border-radius:20px;
+  box-shadow:0 0 25px #00ffe6;
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>Hasil Cek Key</h2>
+
+  <div id="keyBox" style="margin-top:20px;font-size:20px;"></div>
+
+  <a href="user.html" style="color:#00ffe6;display:block;margin-top:20px;">⬅ Kembali ke User</a>
+</div>
+
+<script>
+const url = new URL(window.location.href);
+const key = url.searchParams.get("key");
+
+document.getElementById("keyBox").innerHTML = "KEY:<br><b>" + key + "</b>";
+</script>
+
+</body>
+</html>
