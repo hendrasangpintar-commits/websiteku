@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Poppins, sans-serif;
+  background:#000;
+  color:#00f7ff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.container{
+  width:90%;
+  max-width:420px;
+  background:#0e0e0e;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 0 25px #00f7ff;
+  text-align:center;
+}
+
+input,select{
+  width:100%;
+  margin-top:10px;
+  padding:12px;
+  background:#000;
+  border:2px solid #00f7ff;
+  border-radius:10px;
+  color:#00f7ff;
+  font-size:15px;
+}
+
+button{
+  width:100%;
+  margin-top:15px;
+  padding:12px;
+  background:#00f7ff;
+  color:#000;
+  font-weight:bold;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+  font-size:16px;
+  transition:0.3s;
+}
+
+button:hover{
+  box-shadow:0 0 15px #00f7ff;
+}
+
+.key-box{
+  margin-top:20px;
+  padding:15px;
+  border:2px dashed #00f7ff;
+  border-radius:12px;
+  font-size:18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>ADMIN PANEL</h2>
+
+  <select id="tipeKey">
+    <option value="VEO-VIP">VEO-VIP</option>
+    <option value="B2">B2</option>
+    <option value="C5">Custom</option>
+  </select>
+
+  <input id="customKey" placeholder="Masukkan custom key (kalau pilih C5)" style="display:none">
+
+  <button onclick="generateKey()">Generate Key</button>
+
+  <div class="key-box" id="result">Key belum dibuat</div>
+
+  <a href="user.html" style="color:#00f7ff;display:block;margin-top:15px;">➡ Pergi ke User</a>
+</div>
+
+<script>
+document.getElementById("tipeKey").addEventListener("change",()=>{
+  document.getElementById("customKey").style.display =
+    document.getElementById("tipeKey").value==="C5" ? "block" : "none";
+});
+
+function randomPart(len) {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let out = "";
+  for(let i=0;i<len;i++) out += chars[Math.floor(Math.random()*chars.length)];
+  return out;
+}
+
+function generateKey(){
+  let tipe = document.getElementById("tipeKey").value;
+  let key="";
+
+  if(tipe==="VEO-VIP"){
+    key = "VEO-VIP-" + randomPart(4) + "-" + randomPart(3);
+  }else if(tipe==="B2"){
+    key = "B2-" + randomPart(4) + "-" + randomPart(4);
+  }else{
+    let custom = document.getElementById("customKey").value.trim();
+    key = custom.length>0 ? custom : "CUSTOM-" + randomPart(6);
+  }
+
+  document.getElementById("result").innerText = key;
+}
+</script>
+
+</body>
+</html>
